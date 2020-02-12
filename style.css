@@ -1,5 +1,5 @@
 body {
-    background-color: rgba(56, 56, 56, 0.2) !important;
+    background-color: rgba(56, 56, 56, 0.25) !important;
 }
 
 header #title {
@@ -30,12 +30,12 @@ header #title {
     text-decoration: none;
 }
 
-.nav-tabs li:hover  {
+.nav-tabs li:hover {
     background-color: rgb(46, 46, 46);
     text-decoration: none;
 }
 
-.nav-tabs .active{
+.nav-tabs .active {
     border-bottom: 3px solid rgb(65, 105, 225);
 }
 
@@ -52,6 +52,7 @@ header #title {
     background-color: rgb(34, 32, 32);
 }
 
+
 /*  MAIN PAGE */
 
 .header-container {
@@ -65,10 +66,14 @@ header #title {
     border: none;
 }
 
-#current-weather-icon, .forecast-weather-icon {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 10px;
+#current-weather-icon,
+.forecast-weather-icon {
+    width: 70px;
+    height: 70px;
+}
+
+#forecast-icons .forecast-weather-icon{
+    margin-left: -10px;
 }
 
 .temperature {
@@ -78,7 +83,7 @@ header #title {
 }
 
 .info-title-block {
-    background-color: rgb(238, 236, 236);
+    background-color: rgba(238, 236, 236, 0.3);
     margin: 30px;
     padding: 30px !important;
     width: 90vw !important;

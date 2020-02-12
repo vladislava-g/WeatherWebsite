@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Weather</title>
     <link rel="stylesheet" href="style.css">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -31,7 +31,7 @@
         <div class="container-fluid header-container">
             <div class="row">
                 <div class="col-sm col-left">
-                    <h4 id= "title" class="info-title">My Weather</h4>
+                    <h4 id="title" class="info-title">My Weather</h4>
                 </div>
                 <div class="col-sm col-right">
                     <input type="text" id="search-input">
@@ -100,25 +100,25 @@
                             <p class="info-title-gray col-left">Today</p>
                         </div>
                         <div class="col-sm">
-                            <p class="description-black" class="time">7pm</p>
+                            <p class="description-black time"></p>
                         </div>
                         <div class="col-sm">
-                            <p class="description-black" class="time">8pm</p>
+                            <p class="description-black time"></p>
                         </div>
                         <div class="col-sm">
-                            <p class="description-black" class="time">9pm</p>
+                            <p class="description-black time"></p>
                         </div>
                         <div class="col-sm">
-                            <p class="description-black" class="time">10pm</p>
+                            <p class="description-black time"></p>
                         </div>
                         <div class="col-sm">
-                            <p class="description-black" class="time">11pm</p>
+                            <p class="description-black time"></p>
                         </div>
                         <div class="col-sm">
-                            <p class="description-black" class="time">12pm</p>
+                            <p class="description-black time"></p>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" id="forecast-icons">
                         <!--  FORECAST ICONS  -->
                         <div class="col-sm">
                         </div>
@@ -147,22 +147,22 @@
                             <p class="description">Forecast</p>
                         </div>
                         <div class="col-sm">
-                            <p class="forecast-description description-black">Sunny</p>
+                            <p class="forecast-description description-black"></p>
                         </div>
                         <div class="col-sm">
-                            <p class="forecast-description description-black">Sunny</p>
+                            <p class="forecast-description description-black"></p>
                         </div>
                         <div class="col-sm">
-                            <p class="forecast-description description-black">Sunny</p>
+                            <p class="forecast-description description-black"></p>
                         </div>
                         <div class="col-sm">
-                            <p class="forecast-description description-black">Sunny</p>
+                            <p class="forecast-description description-black"></p>
                         </div>
                         <div class="col-sm">
-                            <p class="forecast-description description-black">Sunny</p>
+                            <p class="forecast-description description-black"></p>
                         </div>
                         <div class="col-sm">
-                            <p class="forecast-description description-black">Sunny</p>
+                            <p class="forecast-description description-black"></p>
                         </div>
                     </div>
                     <div class="row row-with-bottom-border">
@@ -171,27 +171,27 @@
                             <p class="description">Temp(°C)</p>
                         </div>
                         <div class="col-sm">
-                            <label class="forecast-temp description-black">23</label>
+                            <label class="forecast-temp description-black"></label>
                             <label>°</label>
                         </div>
                         <div class="col-sm">
-                            <label class="forecast-temp description-black">12</label>
+                            <label class="forecast-temp description-black"></label>
                             <label>°</label>
                         </div>
                         <div class="col-sm">
-                            <label class="forecast-temp description-black">56</label>
+                            <label class="forecast-temp description-black"></label>
                             <label>°</label>
                         </div>
                         <div class="col-sm">
-                            <label class="forecast-temp description-black">17</label>
+                            <label class="forecast-temp description-black"></label>
                             <label>°</label>
                         </div>
                         <div class="col-sm">
-                            <label class="forecast-temp description-black">11</label>
+                            <label class="forecast-temp description-black"></label>
                             <label>°</label>
                         </div>
                         <div class="col-sm">
-                            <label class="forecast-temp description-black">2</label>
+                            <label class="forecast-temp description-black"></label>
                             <label>°</label>
                         </div>
                     </div>
@@ -201,27 +201,27 @@
                             <p class="description">RealFeel</p>
                         </div>
                         <div class="col-sm">
-                            <label class="forecast-temp description-black">23</label>
+                            <label class="forecast-templike description-black"></label>
                             <label>°</label>
                         </div>
                         <div class="col-sm">
-                            <label class="forecast-temp description-black">12</label>
+                            <label class="forecast-templike description-black"></label>
                             <label>°</label>
                         </div>
                         <div class="col-sm">
-                            <label class="forecast-temp description-black">56</label>
+                            <label class="forecast-templike description-black"></label>
                             <label>°</label>
                         </div>
                         <div class="col-sm">
-                            <label class="forecast-temp description-black">17</label>
+                            <label class="forecast-templike description-black"></label>
                             <label>°</label>
                         </div>
                         <div class="col-sm">
-                            <label class="forecast-temp description-black">11</label>
+                            <label class="forecast-templike description-black"></label>
                             <label>°</label>
                         </div>
                         <div class="col-sm">
-                            <label class="forecast-temp description-black">2</label>
+                            <label class="forecast-templike description-black"></label>
                             <label>°</label>
                         </div>
                     </div>
@@ -231,28 +231,22 @@
                             <p class="description">Wind(km/h)</p>
                         </div>
                         <div class="col-sm">
-                            <label class="forecast-temp description-black">23</label>
-                            <label class="description-black">ESE</label>
+                            <label class="forecast-wind description-black"></label>
                         </div>
                         <div class="col-sm">
-                            <label class="forecast-temp description-black">12</label>
-                            <label class="description-black">ESE</label>
+                            <label class="forecast-wind description-black"></label>
                         </div>
                         <div class="col-sm">
-                            <label class="forecast-temp description-black">56</label>
-                            <label class="description-black">ESE</label>
+                            <label class="forecast-wind description-black"></label>
                         </div>
                         <div class="col-sm">
-                            <label class="forecast-temp description-black">17</label>
-                            <label class="description-black">ESE</label>
+                            <label class="forecast-wind description-black"></label>
                         </div>
                         <div class="col-sm">
-                            <label class="forecast-temp description-black">11</label>
-                            <label class="description-black">ESE</label>
+                            <label class="forecast-wind description-black"></label>
                         </div>
                         <div class="col-sm">
-                            <label class="forecast-temp description-black">2</label>
-                            <label class="description-black">ESE</label>
+                            <label class="forecast-wind description-black"></label>
                         </div>
                     </div>
 
