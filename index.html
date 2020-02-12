@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="container-fluid header-container">
+            <div class="row">
+                <div class="col-sm col-left">
+                    <h4 id= "title" class="info-title">My Weather</h4>
+                </div>
+                <div class="col-sm col-right">
+                    <input type="text" id="search-input">
+                </div>
+            </div>
+        </div>
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">Today</a></li>
+            <li><a data-toggle="tab" href="#menu1">5-day forecast</a></li>
+        </ul>
+    </header>
+
+    <main>
+        <div class="tab-content">
+            <div id="home" class="tab-pane active">
+                <!--    CURRENT WEATHER     -->
+                <div class="container-fluid info-title-block">
+                    <div class="row">
+                        <div class="col-sm col-left">
+                            <h4 class="info-title">Current Weather</h4>
+                        </div>
+                        <div class="col-sm col-right">
+                            <h4 id="date" class="info-title"></h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <img id="current-weather-icon" />
+                            <p id="current-weather-description" class="description"></p>
+                        </div>
+                        <div class="col-sm">
+                            <label id="current-temperature" class="temperature"></label>
+                            <label class="temperature"> °C </label>
+                            <div>
+                                <label class="description">feels like</label>
+                                <label id="feels-like" class="description"></label>
+                                <label class="description"> ° </label>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="start">
+                                <div>
+                                    <label class="description"> Sunrise: </label>
+                                    <label class="description" id="today-sunrise"></label>
+                                </div>
+                                <div>
+                                    <label class="description"> Sunset: </label>
+                                    <label class="description" id="today-sunset"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--    HOURLY   -->
+                <div class="container-fluid info-title-block forecast-block">
+                    <div class="row">
+                        <div class="col-sm col-left">
+                            <h4 class="info-title">Hourly</h4>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <p class="info-title-gray col-left">Today</p>
+                        </div>
+                        <div class="col-sm">
+                            <p class="description-black" class="time">7pm</p>
+                        </div>
+                        <div class="col-sm">
+                            <p class="description-black" class="time">8pm</p>
+                        </div>
+                        <div class="col-sm">
+                            <p class="description-black" class="time">9pm</p>
+                        </div>
+                        <div class="col-sm">
+                            <p class="description-black" class="time">10pm</p>
+                        </div>
+                        <div class="col-sm">
+                            <p class="description-black" class="time">11pm</p>
+                        </div>
+                        <div class="col-sm">
+                            <p class="description-black" class="time">12pm</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!--  FORECAST ICONS  -->
+                        <div class="col-sm">
+                        </div>
+                        <div class="col-sm">
+                            <img class="forecast-weather-icon" />
+                        </div>
+                        <div class="col-sm">
+                            <img class="forecast-weather-icon" />
+                        </div>
+                        <div class="col-sm">
+                            <img class="forecast-weather-icon" />
+                        </div>
+                        <div class="col-sm">
+                            <img class="forecast-weather-icon" />
+                        </div>
+                        <div class="col-sm">
+                            <img class="forecast-weather-icon" />
+                        </div>
+                        <div class="col-sm">
+                            <img class="forecast-weather-icon" />
+                        </div>
+                    </div>
+                    <div class="row row-with-bottom-border">
+                        <!--  FORECAST  -->
+                        <div class="col-sm">
+                            <p class="description">Forecast</p>
+                        </div>
+                        <div class="col-sm">
+                            <p class="forecast-description description-black">Sunny</p>
+                        </div>
+                        <div class="col-sm">
+                            <p class="forecast-description description-black">Sunny</p>
+                        </div>
+                        <div class="col-sm">
+                            <p class="forecast-description description-black">Sunny</p>
+                        </div>
+                        <div class="col-sm">
+                            <p class="forecast-description description-black">Sunny</p>
+                        </div>
+                        <div class="col-sm">
+                            <p class="forecast-description description-black">Sunny</p>
+                        </div>
+                        <div class="col-sm">
+                            <p class="forecast-description description-black">Sunny</p>
+                        </div>
+                    </div>
+                    <div class="row row-with-bottom-border">
+                        <!--  FORECAST TEMPERATURE  -->
+                        <div class="col-sm">
+                            <p class="description">Temp(°C)</p>
+                        </div>
+                        <div class="col-sm">
+                            <label class="forecast-temp description-black">23</label>
+                            <label>°</label>
+                        </div>
+                        <div class="col-sm">
+                            <label class="forecast-temp description-black">12</label>
+                            <label>°</label>
+                        </div>
+                        <div class="col-sm">
+                            <label class="forecast-temp description-black">56</label>
+                            <label>°</label>
+                        </div>
+                        <div class="col-sm">
+                            <label class="forecast-temp description-black">17</label>
+                            <label>°</label>
+                        </div>
+                        <div class="col-sm">
+                            <label class="forecast-temp description-black">11</label>
+                            <label>°</label>
+                        </div>
+                        <div class="col-sm">
+                            <label class="forecast-temp description-black">2</label>
+                            <label>°</label>
+                        </div>
+                    </div>
+                    <div class="row row-with-bottom-border">
+                        <!--  FORECAST REALFEEL  -->
+                        <div class="col-sm">
+                            <p class="description">RealFeel</p>
+                        </div>
+                        <div class="col-sm">
+                            <label class="forecast-temp description-black">23</label>
+                            <label>°</label>
+                        </div>
+                        <div class="col-sm">
+                            <label class="forecast-temp description-black">12</label>
+                            <label>°</label>
+                        </div>
+                        <div class="col-sm">
+                            <label class="forecast-temp description-black">56</label>
+                            <label>°</label>
+                        </div>
+                        <div class="col-sm">
+                            <label class="forecast-temp description-black">17</label>
+                            <label>°</label>
+                        </div>
+                        <div class="col-sm">
+                            <label class="forecast-temp description-black">11</label>
+                            <label>°</label>
+                        </div>
+                        <div class="col-sm">
+                            <label class="forecast-temp description-black">2</label>
+                            <label>°</label>
+                        </div>
+                    </div>
+                    <div class="row row-with-bottom-border">
+                        <!--  FORECAST WIND  -->
+                        <div class="col-sm">
+                            <p class="description">Wind(km/h)</p>
+                        </div>
+                        <div class="col-sm">
+                            <label class="forecast-temp description-black">23</label>
+                            <label class="description-black">ESE</label>
+                        </div>
+                        <div class="col-sm">
+                            <label class="forecast-temp description-black">12</label>
+                            <label class="description-black">ESE</label>
+                        </div>
+                        <div class="col-sm">
+                            <label class="forecast-temp description-black">56</label>
+                            <label class="description-black">ESE</label>
+                        </div>
+                        <div class="col-sm">
+                            <label class="forecast-temp description-black">17</label>
+                            <label class="description-black">ESE</label>
+                        </div>
+                        <div class="col-sm">
+                            <label class="forecast-temp description-black">11</label>
+                            <label class="description-black">ESE</label>
+                        </div>
+                        <div class="col-sm">
+                            <label class="forecast-temp description-black">2</label>
+                            <label class="description-black">ESE</label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div id="menu1" class="tab-pane fade">
+
+            </div>
+        </div>
+    </main>
+
+
+
+    <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>

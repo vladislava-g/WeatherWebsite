@@ -1,0 +1,131 @@
+body {
+    background-color: rgba(56, 56, 56, 0.2) !important;
+}
+
+header #title {
+    text-transform: uppercase;
+    color: rgb(65, 105, 225) !important;
+    font-weight: 700;
+}
+
+.nav-tabs li:first-child {
+    width: 80px !important;
+    margin-left: 25px !important;
+}
+
+.nav-tabs li {
+    width: 150px !important;
+    margin-left: 5px !important;
+    line-height: 50px;
+    height: 50px;
+    background-color: rgb(34, 32, 32);
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    border-bottom: 3px solid rgb(34, 32, 32);
+}
+
+.nav-tabs a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-tabs li:hover  {
+    background-color: rgb(46, 46, 46);
+    text-decoration: none;
+}
+
+.nav-tabs .active{
+    border-bottom: 3px solid rgb(65, 105, 225);
+}
+
+.nav-tabs li .active {
+    border-bottom: none;
+}
+
+.nav-tabs a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.nav {
+    background-color: rgb(34, 32, 32);
+}
+
+/*  MAIN PAGE */
+
+.header-container {
+    padding-top: 15px;
+    margin-bottom: -15px;
+}
+
+.header-container #search-input {
+    width: 250px;
+    padding: 6px;
+    border: none;
+}
+
+#current-weather-icon, .forecast-weather-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.temperature {
+    font-weight: 500;
+    font-size: 45px;
+    margin-top: -10px;
+}
+
+.info-title-block {
+    background-color: rgb(238, 236, 236);
+    margin: 30px;
+    padding: 30px !important;
+    width: 90vw !important;
+}
+
+.info-title-block .col-sm {
+    text-align: center;
+}
+
+.row {
+    width: 100%;
+}
+
+.col-left {
+    text-align: start !important;
+    color: rgb(65, 105, 225) !important;
+    text-transform: uppercase;
+    margin-bottom: 30px !important;
+}
+
+.col-right {
+    text-align: end !important;
+    color: rgb(65, 105, 225) !important;
+    text-transform: uppercase;
+    margin-bottom: 30px !important;
+}
+
+.description {
+    color: gray;
+    font-size: 20px;
+}
+
+.description-black {
+    font-size: 20px;
+}
+
+.info-title-gray {
+    color: rgb(94, 94, 94) !important;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.forecast-block .col-sm {
+    text-align: start;
+}
+
+.forecast-block .row-with-bottom-border {
+    margin-top: 5px;
+    border-bottom: 1px solid rgba(56, 56, 56, 0.1);
+}
