@@ -27,14 +27,15 @@ class ForecastWeather {
 class NetworkManager {
     static getCurrentWeather(cityname) {
         let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityname}&units=metric&appid=921e83b9da8a40a760ad74d5cedd6bbd`;
-        $.getJSON(url, function (data) {
+        return $.getJSON(url, function (data) {
             current_weather.changeProperties(data.name, getDate(),
                 parseInt(data.main.temp, 10), data.weather[0].main,
                 data.weather[0].icon, parseInt(data.main.feels_like, 10), getTime(data.sys.sunrise),
                 getTime(data.sys.sunset), data.sys.country);
 
             updateCurrentWeatherHTML();
-
+        }).fail(function () {
+            searchError();
         });
     }
 
@@ -42,8 +43,8 @@ class NetworkManager {
         let url = `http://api.openweathermap.org/data/2.5/forecast?q=${cityname}&units=metric&appid=921e83b9da8a40a760ad74d5cedd6bbd`;
 
         $.getJSON(url, function (data) {
-            let i;
-            for (i = 0; i < 6; i++) {
+            forecast = [];
+            for (let i = 0; i < 6; i++) {
                 let tmp_weather = new ForecastWeather();
                 let wind_speed = parseInt(data.list[i].wind.speed * (60 * 60) / 1000, 10);
                 let time = data.list[i].dt_txt.split(" ");
@@ -105,7 +106,7 @@ let forecast_templike = document.getElementsByClassName('forecast-templike');
 let forecast_wind = document.getElementsByClassName('forecast-wind');
 
 function updateCurrentForecastHTML() {
-    for(let i = 0; i < time.length; i++){
+    for (let i = 0; i < time.length; i++) {
         time[i].innerHTML = forecast[i].time;
         forecast_icons[i].src = `http://openweathermap.org/img/wn/${forecast[i].icon}@2x.png`;
         forecast_description[i].innerHTML = forecast[i].description;
@@ -113,4 +114,25 @@ function updateCurrentForecastHTML() {
         forecast_templike[i].innerHTML = forecast[i].feelslike;
         forecast_wind[i].innerHTML = forecast[i].wind;
     }
+}
+
+$("#search-btn").click(function () {
+    searchCity();
+})
+
+$("#search-input").keydown(function (e) {
+    if (e.which == 13) {
+        searchCity();
+        $('#search-input').blur();
+    }
+})
+
+function searchCity() {
+    NetworkManager.getCurrentWeather($("#search-input").val());
+    NetworkManager.getForecast($("#search-input").val());
+    $("#search-input").val("");
+}
+
+function searchError() {
+    alert("fail");
 }

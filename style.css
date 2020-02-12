@@ -60,10 +60,35 @@ header #title {
     margin-bottom: -15px;
 }
 
+#title{
+    margin-top: 5px;
+}
+
 .header-container #search-input {
     width: 250px;
+    height: 30px;
     padding: 6px;
     border: none;
+}
+
+.search-div{
+    height: 30px;
+    width: 250px;
+}
+
+#search-btn{
+    margin-left: -4px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: rgba(65, 105, 225, 0.7);
+    height: 40px;
+    font-size: 18px;
+    padding-bottom: 2px;
+}
+
+#search-btn:hover{
+    color: rgb(65, 105, 225);
 }
 
 #current-weather-icon,
