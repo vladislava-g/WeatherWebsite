@@ -122,7 +122,7 @@ function updateCurrentForecastHTML() {
         forecast_wind[i].innerHTML = forecast[i].wind;
     }
     getWeekdays();
-    
+
 }
 
 $("#search-btn").click(function () {
@@ -153,15 +153,17 @@ NetworkManager.getForecast("Kyiv");
 //-----------------------WEEKDAYS
 
 let selected_weekday;
-
+let selected_weekday_index = 0;
 $(".weekday-info").each(function (index) {
     if (selected_weekday == null) {
         selected_weekday = this;
         $(this).css("box-shadow", "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)");
     }
     $(this).click(function () {
+        selected_weekday_index = $(this).attr('data-id');
         $(selected_weekday).css("box-shadow", "none");
         $(this).css("box-shadow", "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)");
+        updateWeekdayForecast();
         selected_weekday = this;
     })
 });
@@ -231,6 +233,13 @@ function addWeekday(start_index, name) {
     weekdays.push(weekday);
 }
 
+let week_time = document.getElementsByClassName('week-time');
+let week_forecast_icons = document.getElementsByClassName('week-forecast-weather-icon');
+let week_forecast_description = document.getElementsByClassName('week-forecast-description');
+let week_forecast_temp = document.getElementsByClassName('week-forecast-temp');
+let week_forecast_templike = document.getElementsByClassName('week-forecast-templike');
+let week_forecast_wind = document.getElementsByClassName('week-forecast-wind');
+
 function updateWeekdaysWeather() {
     $(".weekday").each(function (index) {
         $(this).text(weekdays[index].name);
@@ -248,6 +257,18 @@ function updateWeekdaysWeather() {
         $(this).text(weekdays[index].description);
     });
 
+    updateWeekdayForecast();
+}
+
+function updateWeekdayForecast() {
+    for (let i = 0; i < 6; i++) {
+        week_time[i].innerHTML = weekdays[selected_weekday_index].forecast[i].time;
+        week_forecast_icons[i].src = `http://openweathermap.org/img/wn/${weekdays[selected_weekday_index].forecast[i].icon}@2x.png`;
+        week_forecast_description[i].innerHTML = weekdays[selected_weekday_index].forecast[i].description;
+        week_forecast_temp[i].innerHTML = weekdays[selected_weekday_index].forecast[i].temperature;
+        week_forecast_templike[i].innerHTML = weekdays[selected_weekday_index].forecast[i].feelslike;
+        week_forecast_wind[i].innerHTML = weekdays[selected_weekday_index].forecast[i].wind;
+    }
 }
 
 

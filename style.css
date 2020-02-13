@@ -90,7 +90,7 @@ header #title {
     color: rgb(65, 105, 225);
 }
 
-#current-weather-icon, .forecast-weather-icon, .weekday-weather-icon {
+#current-weather-icon, .forecast-weather-icon, .weekday-weather-icon, .week-forecast-weather-icon {
     width: 70px;
     height: 70px;
 }
