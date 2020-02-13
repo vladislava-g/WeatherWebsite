@@ -24,6 +24,18 @@ class ForecastWeather {
     }
 }
 
+class Weekday {
+    constructor(name, day, month, icon, description, temperature) {
+        this.name = name;
+        this.day = day;
+        this.month = month;
+        this.icon = icon;
+        this.description = description;
+        this.temperature = temperature;
+        this.forecast = [];
+    }
+}
+
 class NetworkManager {
     static getCurrentWeather(cityname) {
         let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityname}&units=metric&appid=921e83b9da8a40a760ad74d5cedd6bbd`;
@@ -44,7 +56,7 @@ class NetworkManager {
 
         $.getJSON(url, function (data) {
             forecast = [];
-            for (let i = 0; i < 6; i++) {
+            for (let i = 0; i < data.list.length; i++) {
                 let tmp_weather = new ForecastWeather();
                 let wind_speed = parseInt(data.list[i].wind.speed * (60 * 60) / 1000, 10);
                 let time = data.list[i].dt_txt.split(" ");
@@ -82,11 +94,6 @@ function degToCompass(num) {
     return arr[(val % 16)];
 }
 
-let current_weather = new CurrentWeather();
-let forecast = [];
-NetworkManager.getCurrentWeather("Kyiv");
-NetworkManager.getForecast("Kyiv");
-
 function updateCurrentWeatherHTML() {
     $("#date").html(current_weather.date);
     $("#current-weather-description").html(current_weather.description);
@@ -114,6 +121,8 @@ function updateCurrentForecastHTML() {
         forecast_templike[i].innerHTML = forecast[i].feelslike;
         forecast_wind[i].innerHTML = forecast[i].wind;
     }
+    getWeekdays();
+    
 }
 
 $("#search-btn").click(function () {
@@ -136,3 +145,109 @@ function searchCity() {
 function searchError() {
     alert("fail");
 }
+
+let current_weather = new CurrentWeather();
+let forecast = [];
+NetworkManager.getCurrentWeather("Kyiv");
+NetworkManager.getForecast("Kyiv");
+//-----------------------WEEKDAYS
+
+let selected_weekday;
+
+$(".weekday-info").each(function (index) {
+    if (selected_weekday == null) {
+        selected_weekday = this;
+        $(this).css("box-shadow", "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)");
+    }
+    $(this).click(function () {
+        $(selected_weekday).css("box-shadow", "none");
+        $(this).css("box-shadow", "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)");
+        selected_weekday = this;
+    })
+});
+
+let weekdays = []; //all week
+let monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+let weekdayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+function getWeekdays() {
+    weekdays = [];
+    let todays_date = forecast[0].date;
+    let date = forecast[0].date;
+    addWeekday(0, "today");
+
+    for (let i = 0; i < forecast.length; i++) {
+        if(forecast[i].date == todays_date || forecast[i].date == date){
+            continue;
+        }
+        date_weekday = new Date(forecast[i].date);
+        addWeekday(i, weekdayNames[date_weekday.getDay()]);
+        date = forecast[i].date;
+    }
+
+    updateWeekdaysWeather();
+}
+
+function addWeekday(start_index, name) {
+    let weekday = new Weekday();
+    let day_number = forecast[start_index].date.split("-");
+    weekday.name = name;
+    weekday.day = day_number[2];
+    if (day_number[1][0] == "0") {
+        weekday.month = monthNames[day_number[1][1] - 1];
+    }
+    else {
+        weekday.month = monthNames[day_number[1] - 1];
+    }
+
+    let avg_temp = 0;
+    let avg_weather = [];
+    for (let i = 0; i < 6; i++ , start_index++) {
+        if(forecast[start_index] == undefined){
+            continue;
+        }
+        if (avg_weather.map(x => x[1]).includes(forecast[start_index].description)) {
+            avg_weather.filter(x => x[1] == forecast[start_index].description).map(x => x[2] += 1);
+        }
+        else {
+            avg_weather.push([forecast[start_index].icon, forecast[start_index].description, 1]);
+        }
+        avg_temp += forecast[start_index].temperature;
+        weekday.forecast.push(forecast[start_index]);
+    }
+
+
+    weekday.temperature = avg_temp / 6;
+    max_desc = avg_weather[0];
+    avg_weather.filter(x => {
+        if (x[2] > max_desc[2]) {
+            max_desc = x;
+        }
+    });
+
+    weekday.description = max_desc[1];
+    weekday.icon = max_desc[0];
+
+    weekdays.push(weekday);
+}
+
+function updateWeekdaysWeather() {
+    $(".weekday").each(function (index) {
+        $(this).text(weekdays[index].name);
+    });
+    $(".weekday-date").each(function (index) {
+        $(this).text(`${weekdays[index].day} ${weekdays[index].month}`);
+    });
+    $(".weekday-weather-icon").each(function (index) {
+        $(this).attr("src", `http://openweathermap.org/img/wn/${weekdays[index].icon}@2x.png`);
+    });
+    $(".weekday-temperature").each(function (index) {
+        $(this).text(parseInt(weekdays[index].temperature, 10));
+    });
+    $(".weekday-temperature-description").each(function (index) {
+        $(this).text(weekdays[index].description);
+    });
+
+}
+
+

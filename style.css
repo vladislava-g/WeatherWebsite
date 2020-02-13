@@ -52,7 +52,6 @@ header #title {
     background-color: rgb(34, 32, 32);
 }
 
-
 /*  MAIN PAGE */
 
 .header-container {
@@ -60,7 +59,7 @@ header #title {
     margin-bottom: -15px;
 }
 
-#title{
+#title {
     margin-top: 5px;
 }
 
@@ -71,12 +70,12 @@ header #title {
     border: none;
 }
 
-.search-div{
+.search-div {
     height: 30px;
     width: 250px;
 }
 
-#search-btn{
+#search-btn {
     margin-left: -4px;
     border: none;
     outline: none;
@@ -87,18 +86,13 @@ header #title {
     padding-bottom: 2px;
 }
 
-#search-btn:hover{
+#search-btn:hover {
     color: rgb(65, 105, 225);
 }
 
-#current-weather-icon,
-.forecast-weather-icon {
+#current-weather-icon, .forecast-weather-icon, .weekday-weather-icon {
     width: 70px;
     height: 70px;
-}
-
-#forecast-icons .forecast-weather-icon{
-    margin-left: -10px;
 }
 
 .temperature {
@@ -136,6 +130,12 @@ header #title {
     margin-bottom: 30px !important;
 }
 
+.second-forecast-column{
+    height: 70px;
+    text-align: start;
+    margin-left: -10px;
+}
+
 .description {
     color: gray;
     font-size: 20px;
@@ -143,6 +143,11 @@ header #title {
 
 .description-black {
     font-size: 20px;
+}
+
+.description-forecast p, .description-forecast div {
+    margin-top: 15px;
+    height: 30px;
 }
 
 .info-title-gray {
@@ -158,4 +163,50 @@ header #title {
 .forecast-block .row-with-bottom-border {
     margin-top: 5px;
     border-bottom: 1px solid rgba(56, 56, 56, 0.1);
+}
+
+/*---------------------------WEEKDAYS---------------------------------------------*/
+
+.info-weekdays-block{
+    padding: 0px !important;
+}
+
+.info-weekdays-block .row{
+    margin: 0px !important;
+}
+
+
+.info-weekdays-block .col-sm{
+    padding-top: 20px;
+    padding-bottom: 15px;
+    text-align: center;
+}
+
+
+.info-weekdays-block .col-sm:hover{
+    cursor: pointer;
+}
+
+.weekday {
+    text-transform: uppercase;
+    color: rgb(65, 105, 225);
+}
+
+.weekday-date{
+    text-transform: uppercase;
+    color: rgb(94, 94, 94);
+}
+
+.weekday-temperature, .weekday-temperature-celcius{
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.weekday-temperature-description{
+    color: rgb(94, 94, 94);
+}
+
+.weekday-info{
+    border: 1px solid;
+    border-color: rgba(56, 56, 56, 0.1);
 }
