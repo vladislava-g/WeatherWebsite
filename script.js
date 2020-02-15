@@ -66,8 +66,8 @@ class NetworkManager {
 
                 forecast.push(tmp_weather);
             }
-
             updateCurrentForecastHTML();
+            $("#search-input").val("");
         });
 
     }
@@ -137,19 +137,41 @@ $("#search-input").keydown(function (e) {
 })
 
 function searchCity() {
+    $("body").css("overflow-y", "visible");
+    $("#search-error").css("display", "none");
+    $("main").css("display", "block");
     NetworkManager.getCurrentWeather($("#search-input").val());
     NetworkManager.getForecast($("#search-input").val());
-    $("#search-input").val("");
+    
 }
 
 function searchError() {
-    alert("fail");
+    $("body").css("overflow-y", "hidden");
+    $("#search-error").css("display", "block");
+    $("main").css("display", "none");
+    $("#search-error-input").text($('#search-input').val());
 }
+
 
 let current_weather = new CurrentWeather();
 let forecast = [];
-NetworkManager.getCurrentWeather("Kyiv");
-NetworkManager.getForecast("Kyiv");
+getCityByGeolocation();
+
+//----------------------------GEOLOCATION
+
+function getCityByGeolocation() {
+    $.get("http://ipinfo.io", function (response) {
+        city_name = response.city;
+        NetworkManager.getCurrentWeather(city_name);
+        NetworkManager.getForecast(city_name);
+    }, "jsonp").fail(function () {
+        city_name = "Kyiv";
+        NetworkManager.getCurrentWeather(city_name);
+        NetworkManager.getForecast(city_name);
+    }
+    );
+}
+
 //-----------------------WEEKDAYS
 
 let selected_weekday;
@@ -170,7 +192,7 @@ $(".weekday-info").each(function (index) {
 
 let weekdays = []; //all week
 let monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-let weekdayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+let weekdayNames = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
 function getWeekdays() {
     weekdays = [];
@@ -217,7 +239,6 @@ function addWeekday(start_index, name) {
         avg_temp += forecast[start_index].temperature;
         weekday.forecast.push(forecast[start_index]);
     }
-
 
     weekday.temperature = avg_temp / 6;
     max_desc = avg_weather[0];

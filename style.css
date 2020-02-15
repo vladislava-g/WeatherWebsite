@@ -1,5 +1,6 @@
 body {
     background-color: rgba(56, 56, 56, 0.25) !important;
+    overflow-x: hidden;
 }
 
 header #title {
@@ -130,7 +131,7 @@ header #title {
     margin-bottom: 30px !important;
 }
 
-.second-forecast-column{
+.second-forecast-column {
     height: 70px;
     text-align: start;
     margin-left: -10px;
@@ -167,23 +168,21 @@ header #title {
 
 /*---------------------------WEEKDAYS---------------------------------------------*/
 
-.info-weekdays-block{
+.info-weekdays-block {
     padding: 0px !important;
 }
 
-.info-weekdays-block .row{
+.info-weekdays-block .row {
     margin: 0px !important;
 }
 
-
-.info-weekdays-block .col-sm{
+.info-weekdays-block .col-sm {
     padding-top: 20px;
     padding-bottom: 15px;
     text-align: center;
 }
 
-
-.info-weekdays-block .col-sm:hover{
+.info-weekdays-block .col-sm:hover {
     cursor: pointer;
 }
 
@@ -192,21 +191,41 @@ header #title {
     color: rgb(65, 105, 225);
 }
 
-.weekday-date{
+.weekday-date {
     text-transform: uppercase;
     color: rgb(94, 94, 94);
 }
 
-.weekday-temperature, .weekday-temperature-celcius{
+.weekday-temperature, .weekday-temperature-celcius {
     font-weight: 500;
     font-size: 25px;
 }
 
-.weekday-temperature-description{
+.weekday-temperature-description {
     color: rgb(94, 94, 94);
 }
 
-.weekday-info{
+.weekday-info {
     border: 1px solid;
     border-color: rgba(56, 56, 56, 0.1);
+}
+
+#search-error {
+    display: none;
+    background-color: rgba(238, 236, 236, 0.3);
+    height: 100vh;
+    width: 100vw;
+    font-size: 26px;
+    font-weight: 600;
+    text-align: center;
+    padding-top: 10%;
+}
+
+#search-error-input {
+    font-weight: 700;
+}
+
+#search-error img {
+    width: 150px;
+    height: 250px;
 }
